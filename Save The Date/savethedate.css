@@ -1,0 +1,40 @@
+img {
+  width: 800px;
+}
+
+.container-fluid, body, html {
+  height: 100%;
+  background-color: #fffef5;
+}
+
+.container-fluid {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portrait {
+  display: none;
+}
+
+.landscape {
+  display: block;
+}
+
+@media screen and (max-width: 800px) {
+  img {
+    width: 100%;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .portrait {
+    display: block;
+  }
+
+  .landscape {
+    display: none;
+  }
+}

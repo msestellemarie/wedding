@@ -9,11 +9,14 @@ body {
     font-family: 'Glacial Indifference';
     display: flex;
     flex-direction: column;
+    max-width: 1024px;
+    margin: 0 auto;
 }
 
 header {
-    background-color: white;
     padding: 1em;
+    background-color: white;
+    margin: 0 0 2em 0;
 }
 
 header .right {
@@ -21,10 +24,21 @@ header .right {
 }
 
 header a {
-    text-transform: uppercase;
-    margin: 0 0.5em;
     color: #333;
     text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.5em;
+}
+
+header a:hover {
+  text-decoration: none;
+  background-color: #333;
+  color: white;
+}
+
+header a:visited, a:active, a:focus {
+  text-decoration: none;
 }
 
 header span {
@@ -39,7 +53,16 @@ section {
     flex: 1;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+}
+
+section h1 {
+  font-family: 'playlistscript';
+  font-size: 4em;
+  margin: 0 0 0.75em 0;
+}
+
+section p {
+  text-align: justify;
 }
 
 h1 {

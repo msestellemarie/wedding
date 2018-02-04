@@ -59,6 +59,7 @@ section h1 {
   font-family: 'playlistscript';
   font-size: 4em;
   margin: 0 0 0.75em 0;
+  text-align: center;
 }
 
 section p {
@@ -76,4 +77,9 @@ p {
 
 footer {
     padding: 1em;
+}
+
+.feather {
+    vertical-align: middle;
+    height: 1.2em;
 }

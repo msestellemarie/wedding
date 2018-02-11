@@ -52,9 +52,15 @@ section {
     margin: 0 auto;
 }
 
-section a:hover, a:active, a:focus, a:visited {
+section a:link,
+section a:hover,
+section a:active,
+section a:focus,
+section a:visited {
   text-decoration: none;
-  color: #333;
+  color: #daae78;
+  font-weight: bold;
+  /* border-bottom: 1px dashed #daae78; */
 }
 
 section a span:hover {

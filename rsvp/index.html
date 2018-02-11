@@ -26,11 +26,96 @@
         </header>
         <section>
             <h1 class="rsvp">RSVP</h1>
-            <p>
-              <ul>
-                <li>Dietary restrictions</li>
-              <ul>
-            </p>
+            <div class="rsvp-content" >
+                <div class="ask-email" >
+                    <p>Let's get this RSVP ball rolling. First off, what's your email address?</p>
+                    <input type="text" class="ask-email-address" placeholder="Email address.">
+                    <button>Look up my invitation</button>
+                </div>
+                <hr/>
+                <div class="loading" >
+                    <!-- https://codepen.io/jczimm/pen/vEBpoL -->
+                    <div class="loader">
+                        <svg class="circular" viewBox="25 25 50 50">
+                            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+                        </svg>
+                    </div>
+                </div>
+                <hr/>
+                <div class="not-found" >
+                    <p><strong>We couldn't find your invitation!</strong> Be sure to give us the email address we sent the invitation to.</p>
+                    <input type="text" class="ask-email-address" placeholder="Email address.">
+                    <button>Look up my invitation</button>
+                </div>
+                <hr/>
+                <div class="ask-attending" >
+                    <p>Hi &lt;name&gt;! Will you be attending our wedding?</p>
+                    <button>Yes</button>
+                    <button>No</button>
+                </div>
+                <hr/>
+                <div class="ask-plus-one" >
+                    <p>Great! Will you be bringing a plus one?</p>
+                    <button>Yes</button>
+                    <button>No</button>
+                </div>
+                <hr/>
+                <div class="ask-plus-one" >
+                    <p>Fantastic. What's their name?</p>
+                    <input type="text" class="ask-plus-one-name" placeholder="Plus one's name.">
+                    <button>Next</button>
+                </div>
+                <hr/>
+                <div class="who-else" >
+                    <p>Great! Who else will be coming?</p>
+                    <table class="review-table">
+                        <thead>
+                            <tr>
+                                <th>Attending?</th>
+                                <th>Attendee's name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="review-row" >
+                                <td>
+                                    <input class="review-attending" type="checkbox" >
+                                </td>
+                                <td>
+                                    <p class="review-name">Laura Troyk</p>
+                                </td>
+                            </tr>
+                            <tr class="review-row" >
+                                <td>
+                                    <input class="review-attending" type="checkbox" >
+                                </td>
+                                <td>
+                                    <p class="review-name">Thomas Troyk</p>
+                                </td>
+                            </tr>
+                            <tr class="review-row" >
+                                <td>
+                                    <input class="review-attending" type="checkbox" >
+                                </td>
+                                <td>
+                                    <p class="review-name">Kayla Troyk</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Do any members of your party have any special dietary restrictions we should be aware of? Please let us know in detail so we can best accommodate them.</p>
+                    <textarea class="review-dietary" rows="2"></textarea>
+                    <p>Once you've finished reviewing your RSVP information, please hit submit.</p>
+                    <button>Submit our RSVP</button>
+                </div>
+                <hr/>
+                <div class="review" >
+                    <!-- same controls and classes as who-else -->
+                </div>
+                <hr/>
+                <div class="thanks" >
+                    <p>Thanks! You should be getting an email confirmation of your RSVP. Feel free to make changes up until &lt;date&gt;. We're so excited to see you at our wedding!</p>
+                </div>
+            </div>
         </section>
         <footer>&nbsp;</footer>
         <script>feather.replace();</script>

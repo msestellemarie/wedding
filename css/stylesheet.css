@@ -149,12 +149,20 @@ footer {
 .rsvp-content input {
     font-family: 'Glacial Indifference';
     padding: 0.5em 1em;
+    border: 1px solid #ddd;
+}
+
+.rsvp-content .review-name {
+    font-family: 'Glacial Indifference';
+    padding: 0 0.5em;
+    margin-left: -0.5em;
 }
 
 .rsvp-content textarea {
     font-family: 'Glacial Indifference';
     padding: 0.5em 1em;
     width: 100%;
+    border: 1px solid #ddd;
 }
 
 .rsvp-content button {

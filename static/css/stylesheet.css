@@ -6,8 +6,12 @@ body {
     font-size: 18px;
     margin: 0;
     height: 100%;
-    font-family: 'Glacial Indifference';
+    font-family: 'glacial_indifferenceregular';
     margin: 0 auto;
+}
+
+strong {
+    font-family: 'glacial_indifferencebold';
 }
 
 header {
@@ -15,6 +19,10 @@ header {
     background-color: white;
     margin: 0 auto 2em;
     max-width: 1024px;
+}
+
+header .home-link {
+    font-family: 'glacial_indifferencebold';
 }
 
 header .right {
@@ -47,6 +55,7 @@ header span {
 }
 
 header .selected {
+    font-family: 'glacial_indifferencebold';
     font-weight: bold;
 }
 
@@ -63,12 +72,14 @@ section a:focus,
 section a:visited {
   text-decoration: none;
   color: #daae78;
+  font-family: 'glacial_indifferencebold';
   font-weight: bold;
   /* border-bottom: 1px dashed #daae78; */
 }
 
 section a span:hover {
   text-decoration: none;
+  font-family: 'glacial_indifferencebold';
   font-weight: bold;
   color: #333
 }
@@ -151,19 +162,19 @@ footer {
 }
 
 .rsvp-content input {
-    font-family: 'Glacial Indifference';
+    font-family: 'glacial_indifferenceregular';
     padding: 0.5em 1em;
     border: 1px solid #ddd;
 }
 
 .rsvp-content .review-name {
-    font-family: 'Glacial Indifference';
+    font-family: 'glacial_indifferenceregular';
     padding: 0 0.5em;
     margin-left: -0.5em;
 }
 
 .rsvp-content textarea {
-    font-family: 'Glacial Indifference';
+    font-family: 'glacial_indifferenceregular';
     padding: 0.5em 1em;
     width: 100%;
     border: 1px solid #ddd;
@@ -171,7 +182,7 @@ footer {
 
 .rsvp-content button {
     /* background-color: #ddd; */
-    font-family: 'Glacial Indifference';
+    font-family: 'glacial_indifferenceregular';
     padding: 0.5em 1em;
 }
 
@@ -264,6 +275,7 @@ footer {
   padding: 6px 10px;
   border-radius: 5px;
 
+  font-family: 'glacial_indifferencebold';
   font-weight: 600;
   text-align: left;
 }
@@ -547,6 +559,7 @@ button {
 
 .navbar-header {
     position: relative;
+
 }
 
 header .right,

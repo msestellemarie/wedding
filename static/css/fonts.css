@@ -3,7 +3,8 @@
 @font-face {
     font-family: 'glacial_indifferencebold';
     src: url('/fonts/glacialindifference-bold-webfont.woff2') format('woff2'),
-         url('/fonts/glacialindifference-bold-webfont.woff') format('woff');
+         url('/fonts/glacialindifference-bold-webfont.woff') format('woff'),
+         url('/fonts/glacialindifference-bold-webfont.TTF') format('ttf');
     font-weight: normal;
     font-style: normal;
 
@@ -12,7 +13,8 @@
 @font-face {
     font-family: 'glacial_indifferenceitalic';
     src: url('/fonts/glacialindifference-italic-webfont.woff2') format('woff2'),
-         url('/fonts/glacialindifference-italic-webfont.woff') format('woff');
+         url('/fonts/glacialindifference-italic-webfont.woff') format('woff'),
+         url('/fonts/glacialindifference-italic-webfont.TTF') format('ttf');
     font-weight: normal;
     font-style: normal;
 
@@ -21,7 +23,8 @@
 @font-face {
     font-family: 'glacial_indifferenceregular';
     src: url('/fonts/glacialindifference-regular-webfont.woff2') format('woff2'),
-         url('/fonts/glacialindifference-regular-webfont.woff') format('woff');
+         url('/fonts/glacialindifference-regular-webfont.woff') format('woff'),
+         url('/fonts/glacialindifference-regular-webfont.TTF') format('ttf');
     font-weight: normal;
     font-style: normal;
 
@@ -30,7 +33,8 @@
 @font-face {
     font-family: 'playlistcaps';
     src: url('/fonts/playlist_caps-webfont.woff2') format('woff2'),
-         url('/fonts/playlist_caps-webfont.woff') format('woff');
+         url('/fonts/playlist_caps-webfont.woff') format('woff'),
+         url('/fonts/playlist_caps-webfont.TTF') format('ttf');
     font-weight: normal;
     font-style: normal;
 
@@ -39,7 +43,8 @@
 @font-face {
     font-family: 'playlistornament';
     src: url('/fonts/playlist_ornament-webfont.woff2') format('woff2'),
-         url('/fonts/playlist_ornament-webfont.woff') format('woff');
+         url('/fonts/playlist_ornament-webfont.woff') format('woff'),
+         url('/fonts/playlist_ornament-webfont.TTF') format('ttf');
     font-weight: normal;
     font-style: normal;
 
@@ -48,7 +53,8 @@
 @font-face {
     font-family: 'playlistscript';
     src: url('/fonts/playlist_script-webfont.woff2') format('woff2'),
-         url('/fonts/playlist_script-webfont.woff') format('woff');
+         url('/fonts/playlist_script-webfont.woff') format('woff'),
+         url('/fonts/playlist_script-webfont.TTF') format('ttf');
     font-weight: normal;
     font-style: normal;
 

@@ -10,15 +10,21 @@ body {
     margin: 0 auto;
 }
 
+.hero-body {
+    background-image: url('/img/hero.jpg');
+    background-size: cover;
+    background-position-y: 80%;
+}
+
 strong {
     font-family: 'glacial_indifferencebold';
 }
 
 header {
+    width: 100%;
     padding: 1em;
     background-color: white;
     margin: 0 auto 2em;
-    max-width: 1024px;
 }
 
 header .home-link {
@@ -102,6 +108,7 @@ section .main {
   align-items: center;
   justify-content: center;
   height: 100%;
+  color: white;
 }
 
 .hero {

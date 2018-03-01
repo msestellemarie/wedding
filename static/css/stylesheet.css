@@ -46,6 +46,10 @@ header span {
     vertical-align: top;
 }
 
+header .selected {
+    font-weight: bold;
+}
+
 section {
     padding: 1.5em;
     max-width: 1024px;
@@ -538,4 +542,86 @@ footer {
 
 button {
   cursor: pointer;
+}
+
+
+.navbar-header {
+    position: relative;
+}
+
+header .right,
+header .text-center {
+    display: block;
+}
+
+.hamburger {
+    padding: 0.5em !important;
+    display: none !important;
+    position: absolute;
+    top: 0.25em;
+    right: 0;
+    margin-top: -15px !important;
+}
+
+.hamburger:focus {
+    outline: none;
+}
+
+.hamburger-box {
+    width: 30px !important;
+}
+
+.hamburger-inner {
+    width: 30px !important;
+}
+
+.hamburger-inner::before {
+    width: 30px !important;
+}
+
+.hamburger-inner::after {
+    width: 30px !important;
+}
+
+.hamburger .hamburger-box {
+    border: none;
+}
+
+@media screen and (max-width: 700px) {
+    .hamburger {
+        display: block !important;
+    }
+
+    header > *,
+    header .right > *,
+    header .text-center > * {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    header .right {
+        float: none;
+    }
+    header {
+        padding-bottom: 0;
+        margin-bottom: 1em;
+    }
+    header .selected {
+        color: white;
+        background-color: #333;
+    }
+
+    header .right,
+    header .text-center {
+        display: none;
+    }
+
+    .navbar-header {
+        text-align: left;
+    }
+
+    section .main {
+        font-size: 5.5em;
+    }
+
 }

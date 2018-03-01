@@ -9,6 +9,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <link rel="stylesheet" src="text/css" href="/css/fonts.css">
         <link rel="stylesheet" src="text/css" href="/css/stylesheet.css">
+        <link rel="stylesheet" src="text/css" href="/css/hamburgers.min.css">
         <title>RSVP</title>
         <link rel="icon" type="img/png" href="/img/favicon.png">
         <script src="/js/feather.min.js"></script>
@@ -16,14 +17,33 @@
     </head>
     <body>
         <header>
-            <a href="/" style="font-weight: 900;">Pete + Estelle</a>
-            <div class="right">
-                <a href="/celebration">Celebration</a>
-                <a href="/details">Details</a>
-                <a href="/timeline">Timeline</a>
-                <a href="/gifts">Gifts</a>
-                <a href="/rsvp" style="font-weight: bold;">RSVP</a>
-            </div>
+            <nav class="navbar" role="navigation">
+                    <div class="navbar-header">
+                        <a href="/" class="home-link" style="font-weight: 900;">Pete + Estelle</a>
+                        <div class="right" >
+                            <a href="/celebration">Celebration</a>
+                            <a href="/details">Details</a>
+                            <a href="/timeline">Timeline</a>
+                            <a href="/gifts">Gifts</a>
+                            <a href="/rsvp" class="selected">RSVP</a>
+                        </div>
+                        <button class="hamburger hamburger--spin" type="button" data-toggle="collapse" data-target="#navbar-collapse" >
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="navbar-collapse" style="margin-top: 0.5em;">
+                        <ul class="nav navbar-nav">
+                            <a href="/celebration">Celebration</a>
+                            <a href="/details">Details</a>
+                            <a href="/timeline">Timeline</a>
+                            <a href="/gifts">Gifts</a>
+                            <a href="/rsvp" class="selected">RSVP</a>
+                        </ul>
+                    </div>
+            </nav>
         </header>
         <section>
             <h1 class="rsvp">RSVP</h1>
@@ -84,5 +104,10 @@
         </section>
         <footer>&nbsp;</footer>
         <script>feather.replace();</script>
+        <script>
+         $('.hamburger').on('click', function() {
+             $(this).toggleClass('is-active');
+         });
+        </script>
     </body>
 </html>

@@ -10,20 +10,40 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <link rel="stylesheet" src="text/css" href="/css/fonts.css">
         <link rel="stylesheet" src="text/css" href="/css/stylesheet.css">
+        <link rel="stylesheet" src="text/css" href="/css/hamburgers.min.css">
         <title>Celebration</title>
         <link rel="icon" type="img/png" href="/img/favicon.png">
         <script src="/js/feather.min.js"></script>
     </head>
     <body>
         <header>
-            <a href="/" style="font-weight: 900;">Pete + Estelle</a>
-            <div class="right">
-                <a href="/celebration" style="font-weight: bold;">Celebration</a>
-                <a href="/details">Details</a>
-                <a href="/timeline">Timeline</a>
-                <a href="/gifts">Gifts</a>
-                <a href="/rsvp">RSVP</a>
-            </div>
+            <nav class="navbar" role="navigation">
+                    <div class="navbar-header">
+                        <a href="/" class="home-link" style="font-weight: 900;">Pete + Estelle</a>
+                        <div class="right" >
+                            <a href="/celebration" class="selected">Celebration</a>
+                            <a href="/details">Details</a>
+                            <a href="/timeline">Timeline</a>
+                            <a href="/gifts">Gifts</a>
+                            <a href="/rsvp">RSVP</a>
+                        </div>
+                        <button class="hamburger hamburger--spin" type="button" data-toggle="collapse" data-target="#navbar-collapse" >
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="navbar-collapse" style="margin-top: 0.5em;">
+                        <ul class="nav navbar-nav">
+                            <a href="/celebration" class="selected">Celebration</a>
+                            <a href="/details">Details</a>
+                            <a href="/timeline">Timeline</a>
+                            <a href="/gifts">Gifts</a>
+                            <a href="/rsvp">RSVP</a>
+                        </ul>
+                    </div>
+            </nav>
         </header>
         <section>
             <h1>Celebration</h1>
@@ -34,7 +54,7 @@
         </section>
 
         <div style="margin: 0em 0 2em;">
-            <div class="parallax-window" data-parallax="scroll" data-image-src="/img/redwoods.jpeg">
+            <div class="parallax-window" data-parallax="scroll" data-image-src="/img/redwoods.jpeg" data-android-fix="true">
                 <div style="height: 10em; width: 100%;" ></div>
             </div>
         </div>
@@ -49,5 +69,10 @@
         </section>
         <footer>&nbsp;</footer>
         <script>feather.replace();</script>
+        <script>
+         $('.hamburger').on('click', function() {
+             $(this).toggleClass('is-active');
+         });
+        </script>
     </body>
 </html>

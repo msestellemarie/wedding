@@ -9,23 +9,48 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <link rel="stylesheet" src="text/css" href="/css/fonts.css">
     <link rel="stylesheet" src="text/css" href="/css/stylesheet.css">
+    <link rel="stylesheet" src="text/css" href="/css/hamburgers.min.css">
     <title>Pete + Estelle</title>
     <link rel="icon" type="img/png" href="/img/favicon.png">
   </head>
   <body style="display: flex; flex-direction: column;">
-    <header>
-        <div class="text-center">
-            <a href="/celebration">Celebration</a>
-            <a href="/details">Details</a>
-            <a href="/timeline">Timeline</a>
-            <a href="/gifts">Gifts</a>
-            <a href="/rsvp">RSVP</a>
-        </div>
-    </header>
+      <header style="width: 100%;">
+          <nav class="navbar" role="navigation">
+              <div class="navbar-header">
+                  <div class="text-center" >
+                      <a href="/celebration">Celebration</a>
+                      <a href="/details">Details</a>
+                      <a href="/timeline">Timeline</a>
+                      <a href="/gifts">Gifts</a>
+                      <a href="/rsvp">RSVP</a>
+                  </div>
+                  <button class="hamburger hamburger--spin" type="button" data-toggle="collapse" data-target="#navbar-collapse" style="position: relative; margin: 0 auto;">
+                      <span class="hamburger-box">
+                          <span class="hamburger-inner"></span>
+                      </span>
+                  </button>
+              </div>
+
+              <div class="collapse navbar-collapse" id="navbar-collapse" style="margin-top: 0.5em; margin-bottom: 2em;">
+                  <ul class="nav navbar-nav">
+                      <a href="/celebration">Celebration</a>
+                      <a href="/details">Details</a>
+                      <a href="/timeline">Timeline</a>
+                      <a href="/gifts">Gifts</a>
+                      <a href="/rsvp">RSVP</a>
+                  </ul>
+              </div>
+          </nav>
+      </header>
     <section class="hero">
         <!-- https://unsplash.com/photos/_HCpwe1-Prc -->
         <!-- https://unsplash.com/photos/78uNJt1kPw8 -->
         <h1 class="main">Pete + Estelle</h1>
     </section>
+    <script>
+    $('.hamburger').on('click', function() {
+        $(this).toggleClass('is-active');
+    });
+    </script>
   </body>
 </html>

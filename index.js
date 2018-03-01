@@ -8,30 +8,30 @@ var ObjectID = require('mongodb').ObjectID;
 
 app.listen(5000);
 
-app.use(bodyparser.urlencoded({extended: false}));
+app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
 
 app.use(express.static(path.join(__dirname,'static')));
 
 app.get('/api/rsvp/', function(req, res){
   if(typeof req.query.email !== "string"){
-    return res.send(null);
+    return res.json(null);
   }
   mongo.connect(url, function(err, client){
     if(err){throw err;}
     client.db('wedding').collection('rsvp').findOne({
-      'people.email': req.query.email
+      'people.email': req.query.email.toLowerCase().trim()
     }, function(err, data){
       if(err){throw err;}
-      res.send(data);
+      res.json(data);
     });
   });
 });
 
-app.put('/api/rsvp', function(req, res){
+app.put('/api/rsvp/', function(req, res){
   var id = req.body._id;
   if(typeof id !== "string"){
-    return res.send(null);
+    return res.json(null);
   }
   delete req.body._id;
   mongo.connect(url, function(err, client){
@@ -40,8 +40,8 @@ app.put('/api/rsvp', function(req, res){
       {_id: new ObjectID(id)},
       req.body
       , function(err, data){
-        if(err){throw err;}
-        res.send();
+          if(err){throw err;}
+          res.json();
       }
     );
   })

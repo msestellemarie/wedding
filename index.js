@@ -17,7 +17,6 @@ const config = {
     pass: process.env.SMTP_PASS
   }
 }
-console.log(config.auth.user, config.auth.pass);
 const transporter = nodemailer.createTransport(config);
 const PORT = process.env.PORT || 5000;
 
@@ -66,7 +65,6 @@ app.put('/api/rsvp/', function(req, res){
                 html: html
               },
               function(err, data) {
-                console.log(err, data);
                 if(err){throw err;}
                 res.json();
               }

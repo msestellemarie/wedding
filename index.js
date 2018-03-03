@@ -3,7 +3,9 @@ const bodyparser = require('body-parser');
 const express = require('express');
 const app = express();
 const mongo = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017/'
+const url = process.env.MONGO_URL || 'mongodb://localhost:27017/';
+const database = process.env.MONGO_DATABASE || 'wedding';
+const collection = process.env.MONGO_COLLECTION || 'rsvp';
 const ObjectID = require('mongodb').ObjectID;
 const nodemailer = require('nodemailer');
 const config = {
@@ -11,13 +13,12 @@ const config = {
   port: 465,
   secure: true,
   auth: {
-    user: process.env.SMTP_USER || 'AKIAJDEJL3KSUEZHGV4A',
-    pass: process.env.SMTP_PASS || 'Ak1mr1rUBxr+x4l4tZ2HoBuJJwOkCG7PoplrV7z9EYwd'
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS
   }
 }
 const transporter = nodemailer.createTransport(config);
-
-app.listen(5000);
+const PORT = process.env.PORT || 5000;
 
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
@@ -30,7 +31,7 @@ app.get('/api/rsvp/', function(req, res){
   }
   mongo.connect(url, function(err, client){
     if(err){throw err;}
-    client.db('wedding').collection('rsvp').findOne({
+    client.db(database).collection(collection).findOne({
       'people.email': req.query.email.toLowerCase().trim()
     }, function(err, data){
       if(err){throw err;}
@@ -47,18 +48,21 @@ app.put('/api/rsvp/', function(req, res){
   delete req.body._id;
   mongo.connect(url, function(err, client){
     if(err){throw err;}
-    client.db('wedding').collection('rsvp').findOneAndUpdate(
+    client.db(database).collection(collection).findOneAndUpdate(
       {_id: new ObjectID(id)},
       req.body
       , function(err, data){
           if(err){throw err;}
+          var to = req.body.people.map(function(x){return x.email;});
+          var html = buildEmail(req.body);
           if(config.auth.user && config.auth.pass){
+            console.log(`\nSending email to "${to.join(', ')}":\n${html}\n\n`);
             transporter.sendMail(
               {
                 from: '"Pete & Estelle" emso18@gmail.com',
-                to: req.body.people.map(function(x){return x.email;}),
+                to: to,
                 subject: 'RSVP Confirmation',
-                html: buildEmail(req.body)
+                html: html
               },
               function(err, data) {
                 console.log(err, data);
@@ -66,6 +70,9 @@ app.put('/api/rsvp/', function(req, res){
                 res.json();
               }
             )
+          }
+          else {
+            console.log(`\nNot sending email to "${to.join(', ')}":\n${html}\n\n`);
           }
       }
     );
@@ -95,3 +102,12 @@ function buildEmail(obj){
   <br/><br/>Thanks,
   <br/>Pete & Estelle`;
 }
+
+app.listen(PORT, function(err, res) {
+  if (err) {
+    console.error("Unable to start server:", err);
+  }
+  else {
+    console.log(`Listening on ${PORT}.`);
+  }
+});

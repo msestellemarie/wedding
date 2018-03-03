@@ -17,6 +17,7 @@ const config = {
     pass: process.env.SMTP_PASS
   }
 }
+console.log(user, pass);
 const transporter = nodemailer.createTransport(config);
 const PORT = process.env.PORT || 5000;
 

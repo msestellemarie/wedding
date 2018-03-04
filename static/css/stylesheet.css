@@ -650,11 +650,16 @@ header .text-center {
   background-color: #333;
   color: white;
   border: 1px solid #333;
-  width: 15%;
+  min-width: 15%;
+}
+
+.rsvp-content .thanks a {
+  color: white;
+  font-family: 'glacial_indifferenceregular';
 }
 
 .rsvp-content .submit-button {
-  width: 35%;
+  min-width: 35%;
 }
 
 .rsvp-content .review-table {
@@ -667,5 +672,5 @@ header .text-center {
 }
 
 .ask-email input {
-  width: 50%;
+  min-width: 50%;
 }

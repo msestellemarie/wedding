@@ -11,6 +11,7 @@ function attendanceList(obj){
 }
 
 function checkBoxes(obj){
+  var plusOneChecked;
   for(var each in obj.people){
     if(obj.people[each].attending){
       $("[data-index=" + each + "] .review-attending").prop("checked", true);
@@ -19,6 +20,22 @@ function checkBoxes(obj){
       $("[data-index=" + each + "] .review-attending").prop("checked", false);
     }
   }
+  $(".review-name").keypress(function(){
+    $("[data-index=1] .review-attending").prop("checked", true);
+  });
+  $("[data-index=0] .review-attending").on("change", function(){
+    if(!$(this).prop("checked")){
+      plusOneChecked = $("[data-index=1] .review-attending").prop("checked");
+      $("[data-index=1] .review-attending").prop("checked", false);
+      $("[data-index=1] .review-attending").prop("disabled", true);
+      $("[data-index=1] .review-name").prop("disabled", true);
+    }
+    else {
+      $("[data-index=1] .review-attending").prop("disabled", false);
+      $("[data-index=1] .review-name").prop("disabled", false);
+      $("[data-index=1] .review-attending").prop("checked", plusOneChecked);
+    }
+  });
 }
 
 function userResponse(obj){
@@ -124,5 +141,5 @@ $(document).ready(function(){
       });
     });
     return false;
-  })
+  });
 })

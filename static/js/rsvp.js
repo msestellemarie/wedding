@@ -20,6 +20,11 @@ function checkBoxes(obj){
       $("[data-index=" + each + "] .review-attending").prop("checked", false);
     }
   }
+  if(!$("[data-index=0] .review-attending").prop("checked")){
+    $("[data-index=1] .review-attending").prop("checked", false);
+    $("[data-index=1] .review-attending").prop("disabled", true);
+    $("[data-index=1] .review-name").prop("disabled", true);
+  }
   $(".review-name").keypress(function(){
     $("[data-index=1] .review-attending").prop("checked", true);
   });

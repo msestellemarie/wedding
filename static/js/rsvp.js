@@ -20,7 +20,7 @@ function checkBoxes(obj){
       $("[data-index=" + each + "] .review-attending").prop("checked", false);
     }
   }
-  if(!$("[data-index=0] .review-attending").prop("checked")){
+  if(!$("[data-index=0] .review-attending").prop("checked") && !obj.family){
     $("[data-index=1] .review-attending").prop("checked", false);
     $("[data-index=1] .review-attending").prop("disabled", true);
     $("[data-index=1] .review-name").prop("disabled", true);
@@ -29,7 +29,7 @@ function checkBoxes(obj){
     $("[data-index=1] .review-attending").prop("checked", true);
   });
   $("[data-index=0] .review-attending").on("change", function(){
-    if(!$(this).prop("checked")){
+    if(!$(this).prop("checked") && !obj.family){
       plusOneChecked = $("[data-index=1] .review-attending").prop("checked");
       $("[data-index=1] .review-attending").prop("checked", false);
       $("[data-index=1] .review-attending").prop("disabled", true);
@@ -79,7 +79,7 @@ $(document).ready(function(){
   $(".review").hide();
   $(".thanks").hide();
   $(".ask-email-address").val(window.location.search.split("=")[1]);
-  $("form").on("submit", function(){
+  $(".ask-email-form").on("submit", function(){
     var email = $(".ask-email-address").val().toLowerCase().trim();
     $(".ask-email").hide();
     $(".loading").show();
@@ -99,7 +99,7 @@ $(document).ready(function(){
       }
       else if(data.family){
         attendanceList(data);
-        $(".attendance-message").text("Hi! Who in your family will be attending?");
+        $(".attendance-message").text("Hi! Who in your family will be attending? Check the boxes next to their names.");
         $(".who-else").show();
       }
       else {
@@ -114,13 +114,14 @@ $(document).ready(function(){
             data.people[1].attending = true;
             $(".ask-plus-one").hide();
             $(".ask-plus-one-name").show();
-            $(".next").click(function(){
+            $(".ask-plus-one-name-form").on('submit', function(){
               data.people[1].name = $(".ask-plus-one-name input").val();
               $(".ask-plus-one-name").hide();
               attendanceList(data);
               checkBoxes(data);
               $(".attendance-message").text("Great! Review and make any changes to your selections below.")
               $(".who-else").show();
+              return false;
             });
           });
           $(".no-plus-one").click(function(){

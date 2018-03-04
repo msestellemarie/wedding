@@ -58,7 +58,7 @@ $(document).ready(function(){
   $(".review").hide();
   $(".thanks").hide();
   $(".ask-email-address").val(window.location.search.split("=")[1]);
-  $(".ask-email button").click(function(){
+  $("form").on("submit", function(){
     var email = $(".ask-email-address").val().toLowerCase().trim();
     $(".ask-email").hide();
     $(".loading").show();
@@ -141,5 +141,6 @@ $(document).ready(function(){
         userResponse(data);
       });
     });
+    return false;
   })
 })

@@ -19,6 +19,7 @@ const config = {
 }
 const transporter = nodemailer.createTransport(config);
 const PORT = process.env.PORT || 5000;
+const HOST = process.env.HOST || 'http://localhost:5000';
 
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
@@ -91,7 +92,7 @@ function buildEmail(obj){
   }
   return `Hi,<br/><br/>
 
-  Thanks for RSVP'ing to our wedding. You can see your selections below. If you'd like to update or change anything, you can <a href="http://localhost:5000/rsvp/" target="_blank">view your responses here</a>. Just make sure to have your final response submitted by September 20th, 2018.
+  Thanks for RSVP'ing to our wedding. You can see your selections below. If you'd like to update or change anything, you can <a href="${HOST}/rsvp/" target="_blank">view your responses here</a>. Just make sure to have your final response submitted by September 20th, 2018.
 
   <br/><br/><b>Attendance List</b>
   ${attendanceList}

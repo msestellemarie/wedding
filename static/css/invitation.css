@@ -1,0 +1,23 @@
+img {
+  width: 500px;
+}
+
+body, html {
+  height: 100%;
+}
+
+.container-fluid {
+  min-height: 100%;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 800px) {
+  img {
+    width: 100%;
+  }
+}

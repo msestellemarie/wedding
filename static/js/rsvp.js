@@ -1,23 +1,22 @@
-function attendanceList(obj, user){
+function attendanceList(obj){
   var members = obj.people.map(function(x){return x.name;});
   for(var each in members){
-    if(members[each] === null){
-      $("tbody").append("<tr class=\"review-row\" data-index=\"" + each + "\"><td><input class=\"review-attending\" type=\"checkbox\"></td><td><input class=\"review-name\" type=\"text\" placeholder=\"Plus one's name.\"></td></tr>");
-    }
-    else if(user === "plusone" && Number(each) === 1){
-      $("tbody").append("<tr class=\"review-row\" data-index=\"" + each + "\"><td><input class=\"review-attending\" type=\"checkbox\" checked></td><td><input class=\"review-name\" type=\"text\" placeholder=\"Plus one's name.\" value=\"" + members[each] + "\"></td></tr>");
-    }
-    else if(user === "plusone"){
-      $("tbody").append("<tr class=\"review-row\" data-index=\"" + each + "\"><td><input class=\"review-attending\" type=\"checkbox\" checked></td><td><p class=\"review-name\">" + members[each] + "</p></td></tr>");
-    }
-    else if(user === "noattend"){
-      $("tbody").append("<tr class=\"review-row\" data-index=\"" + each + "\"><td><input class=\"review-attending\" type=\"checkbox\"></td><td><p class=\"review-name\">" + members[each] + "</p></td></tr>");
-    }
-    else if(members[each] !== user.name || user === "family"){
-      $("tbody").append("<tr class=\"review-row\" data-index=\"" + each + "\"><td><input class=\"review-attending\" type=\"checkbox\" ></td><td><p class=\"review-name\">" + members[each] + "</p></td></tr>");
+    if(obj.people[each].email === undefined){
+      $("tbody").append("<tr class=\"review-row\" data-index=\"" + each + "\"><td><input class=\"review-attending\" type=\"checkbox\"></td><td><input class=\"review-name\" type=\"text\" placeholder=\"Plus one's name.\" value=\"" + (members[each] || "") + "\"></td></tr>");
     }
     else {
-      $("tbody").append("<tr class=\"review-row\" data-index=\"" + each + "\"><td><input class=\"review-attending\" type=\"checkbox\" checked></td><td><p class=\"review-name\">" + members[each] + "</p></td></tr>");
+      $("tbody").append("<tr class=\"review-row\" data-index=\"" + each + "\"><td><input class=\"review-attending\" type=\"checkbox\"></td><td><p class=\"review-name\">" + (members[each] || "") + "</p></td></tr>");
+    }
+  }
+}
+
+function checkBoxes(obj){
+  for(var each in obj.people){
+    if(obj.people[each].attending){
+      $("[data-index=" + each + "] .review-attending").prop("checked", true);
+    }
+    else {
+      $("[data-index=" + each + "] .review-attending").prop("checked", false);
     }
   }
 }
@@ -30,7 +29,7 @@ function userResponse(obj){
     obj.dietary = null;
   }
   for(var each in obj.people){
-    obj.people[each].name = $("[data-index=" + each + "] .review-name").text() || $("[data-index=" + each + "] .review-name").val();
+    obj.people[each].name = $("[data-index=" + each + "] .review-name").text() || $("[data-index=" + each + "] .review-name").val() || null;
     obj.people[each].attending = $("[data-index=" + each + "] .review-attending").prop("checked");
   }
   $(".loading").show();
@@ -69,40 +68,16 @@ $(document).ready(function(){
         $(".ask-email").show();
         $(".not-found").show();
       }
-      else if(data.submitted && data.family){
-        var person = data.people.filter(function(x){return x.email === email;})[0];
-        attendanceList(data, "family");
+      else if(data.submitted){
+        attendanceList(data);
+        checkBoxes(data);
         $(".attendance-message").text("Hi! Review and make any changes to your selections below.");
         $(".review-dietary").val(data.dietary || "");
-        for(var each in data.people){
-          if(data.people[each].attending){
-            $("[data-index=" + each + "] .review-attending").prop("checked", true);
-          }
-          else {
-            $("[data-index=" + each + "] .review-attending").prop("checked", false);
-          }
-        }
         $(".who-else").show();
       }
       else if(data.family){
-        var person = data.people.filter(function(x){return x.email === email;})[0];
-        attendanceList(data, "family");
+        attendanceList(data);
         $(".attendance-message").text("Hi! Who in your family will be attending?");
-        $(".who-else").show();
-      }
-      else if(data.submitted && !data.family){
-        var person = data.people.filter(function(x){return x.email === email;})[0];
-        attendanceList(data, "plusone");
-        $(".attendance-message").text("Hi! Review and make any changes to your selections below.");
-        $(".review-dietary").val(data.dietary || "");
-        for(var each in data.people){
-          if(data.people[each].attending){
-            $("[data-index=" + each + "] .review-attending").prop("checked", true);
-          }
-          else {
-            $("[data-index=" + each + "] .review-attending").prop("checked", false);
-          }
-        }
         $(".who-else").show();
       }
       else {
@@ -110,30 +85,37 @@ $(document).ready(function(){
         $(".ask-attending p").text("Hi " + person.name + "! Will you be attending our wedding?")
         $(".ask-attending").show();
         $(".yes-attending").click(function(){
+          data.people[0].attending = true;
           $(".ask-attending").hide();
           $(".ask-plus-one").show();
           $(".yes-plus-one").click(function(){
+            data.people[1].attending = true;
             $(".ask-plus-one").hide();
             $(".ask-plus-one-name").show();
             $(".next").click(function(){
-              $(".ask-plus-one-name").hide();
               data.people[1].name = $(".ask-plus-one-name input").val();
-              attendanceList(data, "plusone");
+              $(".ask-plus-one-name").hide();
+              attendanceList(data);
+              checkBoxes(data);
               $(".attendance-message").text("Great! Review and make any changes to your selections below.")
               $(".who-else").show();
             });
           });
           $(".no-plus-one").click(function(){
+            data.people[1].attending = false;
             $(".ask-plus-one").hide();
-            data.people[1].name = null;
-            attendanceList(data, person);
+            attendanceList(data);
+            checkBoxes(data);
             $(".attendance-message").text("Great! Review and make any changes to your selections below.")
             $(".who-else").show();
           });
         });
         $(".no-attending").click(function(){
+          data.people[0].attending = false;
+          data.people[1].attending = false;
           $(".ask-attending").hide();
-          attendanceList(data, "noattend");
+          attendanceList(data);
+          checkBoxes(data);
           userResponse(data);
         });
       }

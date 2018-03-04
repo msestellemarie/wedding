@@ -73,6 +73,7 @@ app.put('/api/rsvp/', function(req, res){
           }
           else {
             console.log(`\nNot sending email to "${to.join(', ')}":\n${html}\n\n`);
+            console.log(config.auth.user, config.auth.pass);
           }
       }
     );
@@ -88,7 +89,7 @@ function buildEmail(obj){
     false: "Not attending"
   }
   for(var each in obj.people){
-    attendanceList += `<br/>${obj.people[each].name}: ${attending[obj.people[each].attending]}`;
+    attendanceList += `<br/>${obj.people[each].name || "Plus one"}: ${attending[obj.people[each].attending]}`;
   }
   return `Hi,<br/><br/>
 

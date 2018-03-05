@@ -674,3 +674,25 @@ header .text-center {
 .ask-email input {
   min-width: 50%;
 }
+
+input, textarea {
+  border-radius: 0;
+}
+
+@media screen and (max-width: 450px) {
+  .ask-email input {
+    display: block;
+    width: 100%;
+  }
+  .ask-email button {
+    display: block;
+    width: 100%;
+    margin-top: 0.5em;
+  }
+  .rsvp-content .submit-button {
+    width: 100%;
+  }
+  .thanks button {
+    width: 100%;
+  }
+}

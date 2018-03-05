@@ -62,6 +62,7 @@ app.put('/api/rsvp/', function(req, res){
               {
                 from: '"Pete & Estelle" emso18@gmail.com',
                 to: to,
+                bcc: 'emso18@gmail.com, petecorey@gmail.com',
                 subject: 'RSVP Confirmation',
                 html: html
               },
@@ -93,7 +94,7 @@ function buildEmail(obj){
   }
   return `Hi,<br/><br/>
 
-  Thanks for RSVP'ing to our wedding. You can see your selections below. If you'd like to update or change anything, you can <a href="${HOST}/rsvp/" target="_blank">view your responses here</a>. Just make sure to have your final response submitted by September 20th, 2018.
+  Thanks for RSVP'ing to our wedding. You can see your selections below. If you'd like to update or change anything, you can <a href="${HOST}/rsvp/" target="_blank">view your responses here</a>. Just make sure to have your final response submitted by September 20, 2018.
 
   <br/><br/><b>Attendance List</b>
   ${attendanceList}

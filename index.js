@@ -30,6 +30,7 @@ app.get('/api/rsvp/', function(req, res){
   if(typeof req.query.email !== "string"){
     return res.json(null);
   }
+  console.log(`[RSVP] Getting RSVP for "${req.query.email}"`);
   mongo.connect(url, function(err, client){
     if(err){throw err;}
     client.db(database).collection(collection).findOne({
@@ -47,6 +48,8 @@ app.put('/api/rsvp/', function(req, res){
     return res.json(null);
   }
   delete req.body._id;
+  console.log(`[RSVP] Updating RSVP "${id}" with:`);
+  console.log('[RSVP]', JSON.stringify(req.body));
   mongo.connect(url, function(err, client){
     if(err){throw err;}
     client.db(database).collection(collection).findOneAndUpdate(
@@ -57,7 +60,7 @@ app.put('/api/rsvp/', function(req, res){
           var to = req.body.people.map(function(x){return x.email;});
           var html = buildEmail(req.body);
           if(config.auth.user && config.auth.pass){
-            console.log(`\nSending email to "${to.join(', ')}":\n${html}\n\n`);
+            console.log(`[RSVP] Sending email to "${to.join(', ')}": ${html.split('\n').join(' ')}\n\n`);
             transporter.sendMail(
               {
                 from: '"Pete & Estelle" emso18@gmail.com',
@@ -73,8 +76,8 @@ app.put('/api/rsvp/', function(req, res){
             )
           }
           else {
-            console.log(`\nNot sending email to "${to.join(', ')}":\n${html}\n\n`);
-            console.log(config.auth.user, config.auth.pass);
+            console.log(`[RSVP] Not sending email to "${to.join(', ')}":\n${html}\n\n`);
+            console.log('[RSVP]', config.auth.user, config.auth.pass);
           }
       }
     );
@@ -110,6 +113,6 @@ app.listen(PORT, function(err, res) {
     console.error("Unable to start server:", err);
   }
   else {
-    console.log(`Listening on ${PORT}.`);
+    console.log(`[RSVP] Listening on ${PORT}.`);
   }
 });

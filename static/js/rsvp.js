@@ -89,6 +89,7 @@ $(document).ready(function(){
         $(".initial").hide();
         $(".ask-email").show();
         $(".not-found").show();
+        return;
       }
       else if(data.submitted){
         attendanceList(data);
